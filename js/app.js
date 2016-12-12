@@ -20,42 +20,57 @@ console.log('loaded');
 //extra: scoring display
 //difficulty level
 
+//play background music
+//make squares light up when match
+//disable self-match
+//score-board: 1 match - 9 to go
+//after all matches, play win song
+
 var counter = 0;
 var firstPick = null;
 var secondPick = null;
+var sounds = ['he-he-he', 'bassline', 'gangnam_style', 'go', 'heey', 'noise', 'ooh', 'oppan', 'synth', 'ukwis', 'he-he-he', 'bassline', 'gangnam_style', 'go', 'heey', 'noise', 'ooh', 'oppan', 'synth', 'ukwis'];
 // var audio = [];
 // audio src =
 
 $(function() {
-  $('li').click(function(){
-    var audio = document.getElementById('audio');
-    console.log(audio);
-    audio.setAttribute('src', 'sounds/' + $(this).attr('data-sound') + '.wav');
-    audio.play();
-    counter++;
-
-    if (counter % 2 !== 0) {
-      // first click
-      firstPick = $(this).attr('data-sound');
-    } else {
-      // second click
-      // at the second click, when we have both values to compare
-      // e.g firstPick was 1 and secondPick was 2
-      // if firstPick is the same as secondPick, it's a match
-      // if firstPick is not the same as secondPick, it's not a match
-      secondPick = $(this).attr('data-sound');
-      console.log('first', firstPick, 'second', secondPick);
-
-      if (firstPick===secondPick) {
-        console.log('Match');
-      } else {
-        console.log('not a match');
-      }
-    }
-  });
+  $.each(sounds, createBoard);
+  $('li').click(setChoices);
 });
 
+function createBoard() {
+  var random = Math.floor(Math.random() * sounds.length);
+  $('ul').append(
+    '<li data-sound="' + sounds[random] + '" class="square"></li>'
+  );
+  sounds.splice(random, 1);
+}
 
-//if element is clicked, play a sound
+function setChoices(){
+  var audio = document.getElementById('audio');
+  console.log(audio);
+  audio.setAttribute('src', 'sounds/' + $(this).attr('data-sound') + '.wav');
+  audio.play();
+  counter++;
 
-// var audio = new Audio('he-he-he .wav');
+  if (counter % 2 !== 0) {
+    // first click
+    firstPick = $(this);
+  } else {
+    // second click
+    // at the second click, when we have both values to compare
+    // e.g firstPick was 1 and secondPick was 2
+    // if firstPick is the same as secondPick, it's a match
+    // if firstPick is not the same as secondPick, it's not a match
+    secondPick = $(this);
+    console.log('first', firstPick, 'second', secondPick);
+
+    if (firstPick.attr('data-sound') === secondPick.attr('data-sound')) {
+      console.log('Match');
+      firstPick.addClass('won');
+      secondPick.addClass('won');
+    } else {
+      console.log('not a match');
+    }
+  }
+}
