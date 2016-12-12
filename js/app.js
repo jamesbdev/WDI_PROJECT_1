@@ -25,25 +25,36 @@ console.log('loaded');
 //disable self-match
 //score-board: 1 match - 9 to go
 //after all matches, play win song
-
+var score = 0;
 var counter = 0;
 var firstPick = null;
 var secondPick = null;
 var sounds = ['he-he-he', 'bassline', 'gangnam_style', 'go', 'heey', 'noise', 'ooh', 'oppan', 'synth', 'ukwis', 'he-he-he', 'bassline', 'gangnam_style', 'go', 'heey', 'noise', 'ooh', 'oppan', 'synth', 'ukwis'];
-// var audio = [];
-// audio src =
+
+function startMusic() {
+  var backgroundMusic = new Audio('sounds/sound_loop.wav');
+  backgroundMusic.loop = true;
+  backgroundMusic.play();
+}
 
 $(function() {
+  startMusic();
+  $('#score').text(score);
   $.each(sounds, createBoard);
   $('li').click(setChoices);
 });
 
-function createBoard() {
+function createBoard(index) {
   var random = Math.floor(Math.random() * sounds.length);
   $('ul').append(
-    '<li data-sound="' + sounds[random] + '" class="square"></li>'
+    '<li id="' + index + '" data-sound="' + sounds[random] + '" class="square"></li>'
   );
   sounds.splice(random, 1);
+}
+
+function checkBoard() {
+  //if class won all checked, call win
+
 }
 
 function setChoices(){
@@ -63,14 +74,23 @@ function setChoices(){
     // if firstPick is the same as secondPick, it's a match
     // if firstPick is not the same as secondPick, it's not a match
     secondPick = $(this);
-    console.log('first', firstPick, 'second', secondPick);
+    console.log('first', firstPick.attr('data-sound'), 'second', secondPick.attr('data-sound'));
 
-    if (firstPick.attr('data-sound') === secondPick.attr('data-sound')) {
-      console.log('Match');
-      firstPick.addClass('won');
-      secondPick.addClass('won');
+
+    if (firstPick.attr('id') !== secondPick.attr('id')) {
+      if (firstPick.attr('data-sound') === secondPick.attr('data-sound')) {
+        console.log('Match');
+        firstPick.addClass('won');
+        secondPick.addClass('won');
+        score = score + 5;
+        checkBoard();
+      } else {
+        console.log('not a match');
+        score = score - 1;
+      }
+      $('#score').text(score);
     } else {
-      console.log('not a match');
+      console.log('it\'s the same, cheater');
     }
   }
 }

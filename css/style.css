@@ -1,5 +1,7 @@
 body {
-  background-color: purple;
+  background-color: rgb(84, 112, 166);
+  background-image: images/gangnam_style.jpg;
+
 }
 
 ul {
@@ -14,8 +16,18 @@ li {
   width: 118px;
   height: 118px;
   border: 1px solid #000;
+  align-content: center;
 }
 
 .won {
   background-color: gold;
+}
+
+h1 {
+  text-align: center;
+}
+
+h3 {
+  text-align: right;
+
 }
