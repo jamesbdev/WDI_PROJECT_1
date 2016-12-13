@@ -1,8 +1,11 @@
 
 //matches-board: 1 match - 9 to go
 //after all matches, play win song
+//number of clicks
+//reset board
 
 var matches;
+var clicks;
 var counter;
 var firstPick = null;
 var secondPick = null;
@@ -10,6 +13,10 @@ var backgroundMusic;
 var winMusic;
 var sounds = ['he-he-he', 'bassline', 'gangnam_style', 'go', 'heey', 'noise', 'ooh', 'oppan', 'synth', 'ukwis', 'he-he-he', 'bassline', 'gangnam_style', 'go', 'heey', 'noise', 'ooh', 'oppan', 'synth', 'ukwis'];
 
+function numberofClicks () {
+  //if element is clicked
+  //change inner html of
+}
 
 function startMusic() {
   backgroundMusic = new Audio('sounds/sound_loop.wav');
