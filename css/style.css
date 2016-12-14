@@ -4,11 +4,12 @@ body {
   background-color: rgb(67, 91, 242);
 
   text-align: center;
-  /*background-image: url("../images/gangnam.jpg");*/
+  background-image: url("../images/gangnam.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-color:
+
 }
 
 ul {
@@ -36,9 +37,16 @@ li {
 h1 {
   text-align: center;
   font-family: 'Cabin', sans-serif;
+  color: white;
 }
 
 h3 {
   padding: 0 25px;
-  text-align: right;
+text-align: center;
+color: white;
+}
+
+#background {
+  background-image: url("../images/gangnam.jpg");
+
 }
