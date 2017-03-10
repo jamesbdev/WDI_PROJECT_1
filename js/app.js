@@ -23,14 +23,14 @@ function startMusic() {
   backgroundMusic.loop = true;
   backgroundMusic.play();
 }
-
+// document.ready function 
 $(function() {
   startMusic();
   matches = 0;
   counter = 0;
   firstPick = null;
   secondPick = null;
-  
+
   $('#matchesLeft').text(10 - matches);
   var sounds = ['he-he-he', 'bassline', 'gangnam_style', 'go', 'heey', 'noise', 'ooh', 'oppan', 'synth', 'ukwis', 'he-he-he', 'bassline', 'gangnam_style', 'go', 'heey', 'noise', 'ooh', 'oppan', 'synth', 'ukwis'];
   $.each(sounds, createBoard);
