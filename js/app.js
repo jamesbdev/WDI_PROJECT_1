@@ -23,7 +23,7 @@ function startMusic() {
   backgroundMusic.loop = true;
   backgroundMusic.play();
 }
-// document.ready function 
+// document.ready function ...
 $(function() {
   startMusic();
   matches = 0;
