@@ -4,18 +4,27 @@ body {
   background-color: rgb(67, 91, 242);
 
   text-align: center;
-  background-image: url("../images/gangnam.jpg");
+  /*background-image: url("../images/gangnam.jpg");*/
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color:
+  background-color:;
+  font-family: 'Open Sans', sans-serif;
 
+}
+
+p {
+  text-align: center;
+  padding: 5px;
+  color: white;
+  /*font-family: sans-serif;*/
 }
 
 ul {
   margin: 0 auto;
   padding: 0;
   width: 600px;
+  color: white;
 }
 
 li {
@@ -23,7 +32,7 @@ li {
   float: left;
   width: 118px;
   height: 118px;
-  border: 1px solid #000;
+  border: 1px solid white;
   align-content: center;
 }
 
@@ -36,14 +45,15 @@ li {
 
 h1 {
   text-align: center;
-  font-family: 'Cabin', sans-serif;
+  /*font-family: 'Cabin', sans-serif;*/
   color: white;
 }
 
 h3 {
   padding: 0 25px;
-text-align: center;
-color: white;
+  text-align: center;
+  color: white;
+  /*font-family: sans-serif;*/
 }
 
 #background {

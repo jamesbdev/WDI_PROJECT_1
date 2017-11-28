@@ -17,7 +17,7 @@ var sounds = ['he-he-he', 'bassline', 'gangnam_style', 'go', 'heey', 'noise', 'o
   //if element is clicked
   //change inner html of
 
-
+//sets background loop to play
 function startMusic() {
   backgroundMusic = new Audio('sounds/sound_loop.wav');
   backgroundMusic.loop = true;
@@ -25,12 +25,15 @@ function startMusic() {
 }
 // document.ready function ...
 $(function() {
+  //invoke function startMusic
   startMusic();
+  //setting variables
   matches = 0;
   counter = 0;
   firstPick = null;
   secondPick = null;
 
+//selects span #matchesLeft
   $('#matchesLeft').text(10 - matches);
   var sounds = ['he-he-he', 'bassline', 'gangnam_style', 'go', 'heey', 'noise', 'ooh', 'oppan', 'synth', 'ukwis', 'he-he-he', 'bassline', 'gangnam_style', 'go', 'heey', 'noise', 'ooh', 'oppan', 'synth', 'ukwis'];
   $.each(sounds, createBoard);
@@ -41,6 +44,7 @@ $(function() {
 
 function createBoard(index) {
   var random = Math.floor(Math.random() * sounds.length);
+  //
   $('ul').append(
     '<li id="' + index + '" data-sound="' + sounds[random] + '" class="square"></li>'
   );
@@ -87,7 +91,15 @@ function setChoices(){
       }
       $('#matchesLeft').text(10 - matches);
     } else {
-      console.log('it\'s the same, cheater');
+      console.log('it\'s the same');
     }
   }
 }
+
+//timer function
+
+$(document).ready(function() {
+    setTimeout(function() {
+      $(".warning").fadeOut(1500);
+    },3000);
+});
